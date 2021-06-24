@@ -8,18 +8,18 @@ const btnSend = document.querySelector('#btnSend');
 
 // Conectarse
 socket.on('connect', () => {
-    console.log('Conn');
-
     lOffline.style.display = 'none';
     lOnline.style.display = '';
 });
 
 // Desconectar
 socket.on('disconnect', () => {
-    console.log('Discnn');
-
     lOnline.style.display = 'none';
     lOffline.style.display = '';
+});
+
+socket.on('sendmsg', (payload) => {
+    console.log('SV', payload);
 });
 
 btnSend.addEventListener('click', () => {
@@ -29,5 +29,7 @@ btnSend.addEventListener('click', () => {
         msg,
         id: 'dwad'
     }
-    socket.emit('sendmsg', payload);
+    socket.emit('sendmsg', payload, (id) => {
+        console.log('Desde el SV', id);
+    });
 });
