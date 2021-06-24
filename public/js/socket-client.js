@@ -23,6 +23,11 @@ socket.on('disconnect', () => {
 });
 
 btnSend.addEventListener('click', () => {
-    const msg = txtMsg.nodeValue;
-    console.log(msg);
+    const msg = txtMsg.value;
+
+    const payload = {
+        msg,
+        id: 'dwad'
+    }
+    socket.emit('sendmsg', payload);
 });
