@@ -4,6 +4,9 @@ const socket = io();
 const lOnline = document.querySelector('#lOnline');
 const lOffline = document.querySelector('#lOffline');
 
+const txtMsg = document.querySelector('#txtMsg');
+const btnSend = document.querySelector('#btnSend');
+
 // Conectarse
 socket.on('connect', () => {
     console.log('Conn');
