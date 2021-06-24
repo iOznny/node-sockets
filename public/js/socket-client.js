@@ -3,7 +3,6 @@ const socket = io();
 // Referencias html
 const lOnline = document.querySelector('#lOnline');
 const lOffline = document.querySelector('#lOffline');
-
 const txtMsg = document.querySelector('#txtMsg');
 const btnSend = document.querySelector('#btnSend');
 
@@ -21,4 +20,9 @@ socket.on('disconnect', () => {
 
     lOnline.style.display = 'none';
     lOffline.style.display = '';
+});
+
+btnSend.addEventListener('click', () => {
+    const msg = txtMsg.nodeValue;
+    console.log(msg);
 });
