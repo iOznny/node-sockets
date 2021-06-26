@@ -13,14 +13,11 @@ socket.on('disconnect', () => {
 });
 
 socket.on('currentTicket', (ticket) => {
-    console.log(ticket);
     lblNuevoTicket.innerText = 'TTUR-' + ticket;
 });
 
-
 btnGenerar.addEventListener('click', () => {
     socket.emit('nextTicket', null, (ticket) => {
-        console.log('Desde el server', ticket);
         lblNuevoTicket.innerText = ticket;
     });
 });
