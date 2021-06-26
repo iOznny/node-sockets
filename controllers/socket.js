@@ -2,8 +2,9 @@ const TicketControl = require('../models/ticket-control');
 const tkControl = new TicketControl();
 
 const socketClt = (socket) => { 
-    /* socket.on('disconnect', () => { 
-    }); */
+    
+    socket.on('disconnect', () => { 
+    });
 
     socket.emit('currentTicket', tkControl.end);
 
@@ -18,6 +19,29 @@ const socketClt = (socket) => {
         // Notificar existencia de un nuevo ticket pendiente.
 
     });
+
+    socket.on('attendTicket', ({ desktop }, callback) => {
+        if (!desktop) {
+            return callback({
+                code: false,
+                message: 'El escritorio es obligatorio.'
+            });
+        }
+
+        const ticket = tkControl.attendTicket(desktop);
+        if (!ticket) {
+            callback({
+                code: false,
+                message: 'No existen tickets pendientes.'
+            });
+        } else {
+            callback({
+                code: true,
+                ticket
+            });
+        }
+    });
+
 }
 
 module.exports = {

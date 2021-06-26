@@ -74,7 +74,7 @@ class TicketControl {
         ticket.window = window;
 
         // Agregamos el elemento a la primera posición del arreblo (unshift)
-        this.finishTickets.unshift();
+        this.finishTickets.unshift(ticket);
 
         // Verificar la existencia de 4 tikcets.
         if (this.finishTickets.length > 4) {
