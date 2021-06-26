@@ -1,4 +1,7 @@
-const socketClt = (socket) => {
+const TicketControl = require('../models/ticket-control');
+const tkControl = new TicketControl();
+
+const socketClt = (socket) => { 
     /* socket.on('disconnect', () => { 
     }); */
 
