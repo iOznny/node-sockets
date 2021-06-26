@@ -5,10 +5,18 @@ const socketClt = (socket) => {
     /* socket.on('disconnect', () => { 
     }); */
 
-    socket.on('sendmsg', (payload, callback) => {
-        const id = 1234567;
+    socket.emit('currentTicket', tkControl.end);
+
+    socket.on('nextTicket', (payload, callback) => {
+        /* const id = 1234567;
         callback(id);
-        socket.broadcast.emit('sendmsg', payload);
+        socket.broadcast.emit('sendmsg', payload); */
+
+        const next = tkControl.nextTicket();
+        callback(next);
+
+        // Notificar existencia de un nuevo ticket pendiente.
+
     });
 }
 
