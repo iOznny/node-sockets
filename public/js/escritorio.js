@@ -4,6 +4,7 @@ const lblDesktop = document.querySelector('h1');
 const btnAttend = document.querySelector('button');
 const lblSmall = document.querySelector('small');
 const divAlert = document.querySelector('.alert');
+const lblPendientes = document.querySelector('#lblPendientes');
 
 if (!searchParams.has('desktop')) {
     window.location = 'index.html';
@@ -24,8 +25,13 @@ socket.on('disconnect', () => {
     btnAttend.disabled = true;
 });
 
-socket.on('currentTicket', (ticket) => {
-    //lblNuevoTicket.innerText = 'TTUR-' + ticket;
+socket.on('ticketsPending', (tickets) => {
+    if (tickets === 0) {
+        lblPendientes.style.display = 'none';
+    } else {
+        lblPendientes.style.display = '';
+        lblPendientes.innerText = tickets;
+    }
 });
 
 btnAttend.addEventListener('click', () => {
@@ -35,8 +41,6 @@ btnAttend.addEventListener('click', () => {
             return divAlert.style.display = '';
         }
 
-        lblSmall.innerText = `TTUR-${ ticket.number }`
-
-
+        lblSmall.innerText = `Ticket-${ ticket.number }`
     });
 });

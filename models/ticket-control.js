@@ -59,7 +59,7 @@ class TicketControl {
 
         // Guardamos
         this.saveDB();
-        return 'TTUR-' + ticket.number;
+        return 'Ticket-' + ticket.number;
     }
 
     // Atender Ticket
