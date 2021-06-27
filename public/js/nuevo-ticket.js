@@ -13,7 +13,7 @@ socket.on('disconnect', () => {
 });
 
 socket.on('currentTicket', (ticket) => {
-    lblNuevoTicket.innerText = 'TTUR-' + ticket;
+    lblNuevoTicket.innerText = 'Ticket-' + ticket;
 });
 
 btnGenerar.addEventListener('click', () => {
